@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Profile</title>
+</head>
+<body>
+    <form action= "{% url 'customers:create' %}" method="post">
+        {% csrf_token %}
+        Name:<input type= "text" name="name" id="name"><br />
+        Address: <input type="text" name="Address" id="Address"><br />
+        Pick up Date: <input type="text" name="Pick up Date" id="Pick up Date"><br />
+       <input type="submit" value="Add!">
+    </from>
+</body>
+</html>
