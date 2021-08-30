@@ -29,10 +29,11 @@ def index(request):
 def create(request):
     if request.method == "POST":
         name = request.POST.get('name')
+        user = request.user
         address = request.POST.get('address')
         zip_code = request.POST.get('zip_code')
         weekly_pickup_day = request.POST.get('weekly_pickup_day')
-        new_customer = Customer(name=name, address=address, zip_code=zip_code, weekly_pickup_day=weekly_pickup_day)
+        new_customer = Customer(name=name, user=user, address=address, zip_code=zip_code, weekly_pickup_day=weekly_pickup_day)
         new_customer.save()
         return HttpResponseRedirect(reverse('customers:index'))
     else:
