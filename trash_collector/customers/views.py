@@ -12,7 +12,6 @@ from django.urls import reverse
 def index(request):
     # The following line will get the logged-in in user (if there is one) within any view function
     user = request.user
-
     try:
         # This line inside the 'try' will return the customer record of the logged-in user if one exists
         logged_in_customer = Customer.objects.get(user=user)
@@ -42,7 +41,8 @@ def create(request):
 
 def edit(request):
     # changed user = user to user = logged_in_customer
-    logged_in_customer = Customer.objects.get(request.user)
+    user = request.user
+    logged_in_customer = Customer.objects.get(user=user)
     if request.method == "POST":
         logged_in_customer.name = request.POST.get('name')
         logged_in_customer.address = request.POST.get('address')
@@ -54,4 +54,7 @@ def edit(request):
         logged_in_customer.save()
         return HttpResponseRedirect(reverse('customers:index'))
     else:
-        return render(request, 'customers/update.html')
+        context = {
+            "logged_in_customer": logged_in_customer
+        }
+        return render(request, "customers/update.html", context)

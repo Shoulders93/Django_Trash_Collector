@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Update your Profile</title>
 </head>
 <body>
-    <form action="{% url 'customers:edit' logged_in_customer %}" method="post">
+    <form action="{% url 'customers:edit' %}" method="post">
         {% csrf_token %}
         Name:<input type= "text" name="name" id="name"><br />
         Address: <input type="text" name="address" id="address"><br />
