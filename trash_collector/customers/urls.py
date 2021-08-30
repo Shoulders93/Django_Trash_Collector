@@ -8,5 +8,6 @@ app_name = "customers"
 urlpatterns = [
     path('', views.index, name="index"),
     path('new/',views.create, name="create"),
+    path('edit/logged_in_customer', views.edit, name='edit')
     
 ]

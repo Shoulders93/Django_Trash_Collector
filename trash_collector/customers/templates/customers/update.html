@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update your Profile</title>
+</head>
+<body>
+    <form action="{% url 'customers:edit' logged_in_customer %}" method="post">
+        {% csrf_token %}
+        Name:<input type= "text" name="name" id="name"><br />
+        Address: <input type="text" name="address" id="address"><br />
+        zip_code = <input type="text" name="zip_code" id="zip_code"><br />
+        weekly_pickup_day = <input type="text" name="weekly_pickup_day" id="weekly_pickup_day"><br />
+        one_time_pickup = <input type="date" name="one_time_pickup" id="one_time_pickup"><br />
+        suspend_start = <input type="date" name="suspend_start" id="suspend_start"><br />
+        suspend_end = <input type="date" name="weekly_pickup_day" id="weekly_pickup_day"><br />
+        <input type="submit" value="Update!">
+    </form>
+</body>
+</html>

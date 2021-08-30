@@ -39,3 +39,19 @@ def create(request):
     else:
    
         return render(request, 'customers/create.html')
+
+def edit(request):
+    # changed user = user to user = logged_in_customer
+    logged_in_customer = Customer.objects.get(request.user)
+    if request.method == "POST":
+        logged_in_customer.name = request.POST.get('name')
+        logged_in_customer.address = request.POST.get('address')
+        logged_in_customer.zip_code = request.POST.get('zip_code')
+        logged_in_customer.weekly_pickup_day = request.POST.get('weekly_pickup_day')
+        logged_in_customer.one_time_pickup = request.POST.get('one_time_pickup')
+        logged_in_customer.suspend_start = request.POST.get('suspend_start')
+        logged_in_customer.suspend_end = request.POST.get('suspend_end')
+        logged_in_customer.save()
+        return HttpResponseRedirect(reverse('customers:index'))
+    else:
+        return render(request, 'customers/update.html')
