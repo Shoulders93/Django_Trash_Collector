@@ -8,6 +8,17 @@
 {% block content %}
   {% if user.is_authenticated %}
     Hello Customer {{ user.username }}!
+    <body>
+      <h3>Here is information about your profile:</h3>
+      <p>Name: {{logged_in_customer.name}}</p>
+      <p>Address: {{logged_in_customer.address}}</p>
+      <p>Zip Code: {{logged_in_customer.zip_code}}</p>
+      <p>Weekly Pickup Day: {{logged_in_customer.weekly_pickup_day}}</p>
+      <p>One Time Pickup Day: {{logged_in_customer.one_time_pickup}}</p>
+      <p>Suspend start date: {{logged_in_customer.suspend_start}}</p>
+      <p>Suspend end date: {{logged_in_customer.suspend_end}}</p>
+
+    </body>
   {% else %}
     <p>You are at the customer index, but you are not logged in.</p>
     <a href="{% url 'login' %}">Log In</a>

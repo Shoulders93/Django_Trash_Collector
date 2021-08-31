@@ -12,9 +12,11 @@ from django.urls import reverse
 def index(request):
     # The following line will get the logged-in in user (if there is one) within any view function
     user = request.user
+    context = {}
     try:
         # This line inside the 'try' will return the customer record of the logged-in user if one exists
         logged_in_customer = Customer.objects.get(user=user)
+        context["logged_in_customer"] = logged_in_customer
     except:
         # TODO: Redirect the user to a 'create' function to finish the registration process if no customer record found
         pass
@@ -22,7 +24,7 @@ def index(request):
     # It will be necessary while creating a Customer/Employee to assign request.user as the user foreign key
 
     print(user)
-    return render(request, 'customers/index.html')
+    return render(request, 'customers/index.html', context)
 
 
 def create(request):
@@ -43,6 +45,7 @@ def edit(request):
     # changed user = user to user = logged_in_customer
     user = request.user
     logged_in_customer = Customer.objects.get(user=user)
+    
     if request.method == "POST":
         logged_in_customer.name = request.POST.get('name')
         logged_in_customer.address = request.POST.get('address')

@@ -2,12 +2,16 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="styles.css">
   <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
 {% if user.is_authenticated %}
   {% for group in user.groups.all%}
     {% if group.name == "Customers" %}
+    <div> class='navigation bar'>
+
+    </div>
     <p>Customer Navbar</p>
     {% elif group.name == "Employees" %}
     <p>Employee Navbar</p>

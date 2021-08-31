@@ -8,16 +8,33 @@
     <title>Update your Profile</title>
 </head>
 <body>
+    <h2>Edit your information here</h2>
+    <p>Would you like to add a one time pickup?</p>
+    <form action="{% url 'customers:edit' %}" method="post">
+        {% csrf_token %}
+        one_time_pickup = <input type="date" name="one_time_pickup" id="one_time_pickup"><br />
+        <input type="submit" value="Update!">
+    </form>
+    <p>Would you like to temporarily suspend your account?</p>
+    <form action="{% url 'customers:edit' %}" method="post">
+        {% csrf_token %}
+        suspend_start = <input type="date" name="suspend_start" id="suspend_start"><br />
+        suspend_end = <input type="date" name="weekly_pickup_day" id="weekly_pickup_day"><br />
+        <input type="submit" value="Update!">
+    </form>
+    <p>Would you like to update your weekly pickup day?</p>
+    <form action="{% url 'customers:edit' %}" method="post">
+        {% csrf_token %}
+        weekly_pickup_day = <input type="text" name="weekly_pickup_day" id="weekly_pickup_day"><br />        <input type="submit" value="Update!">
+    </form>
+    <p>Would you like to update your basic account info?</p>
     <form action="{% url 'customers:edit' %}" method="post">
         {% csrf_token %}
         Name:<input type= "text" name="name" id="name"><br />
         Address: <input type="text" name="address" id="address"><br />
         zip_code = <input type="text" name="zip_code" id="zip_code"><br />
-        weekly_pickup_day = <input type="text" name="weekly_pickup_day" id="weekly_pickup_day"><br />
-        one_time_pickup = <input type="date" name="one_time_pickup" id="one_time_pickup"><br />
-        suspend_start = <input type="date" name="suspend_start" id="suspend_start"><br />
-        suspend_end = <input type="date" name="weekly_pickup_day" id="weekly_pickup_day"><br />
         <input type="submit" value="Update!">
     </form>
+
 </body>
 </html>
