@@ -8,6 +8,9 @@
 {% block content %}
     <form action= "{% url 'customers:create' %}" method="post">
         {% csrf_token %}
+        <p>Welcome to Creating your customer profile!</p>
+        <p>Once your create your username this is where you put your basic information. You will only be able to do this once.</p>
+        <p>If you have already put in this information once before you will want to go to 'Edit' to change this information.</p>
         Name:<input type= "text" name="name" id="name"><br />
         Address: <input type="text" name="address" id="address"><br />
         zip_code = <input type="text" name="zip_code" id="zip_code"><br />
