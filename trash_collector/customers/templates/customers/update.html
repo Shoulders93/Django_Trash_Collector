@@ -1,40 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'base.html' %}
 
-    <title>Update your Profile</title>
-</head>
-<body>
-    <h2>Edit your information here</h2>
-    <p>Would you like to add a one time pickup?</p>
-    <form action="{% url 'customers:edit' %}" method="post">
-        {% csrf_token %}
-        one_time_pickup = <input type="date" name="one_time_pickup" id="one_time_pickup"><br />
-        <input type="submit" value="Update!">
-    </form>
+{% block title %}{% block header %} Update Your Profile {% endblock %}{% endblock %}
+
+{% block content %}
+<h2>Edit your information here</h2>
+<p>Would you like to add a one time pickup?</p>
+<form action="{% url 'customers:edit' %}" method="post">
+    {% csrf_token %}
+    one_time_pickup = <input type="date" name="one_time_pickup" id="one_time_pickup" value="{{logged_in_customer.one_time_pickup}}"><br />
     <p>Would you like to temporarily suspend your account?</p>
-    <form action="{% url 'customers:edit' %}" method="post">
-        {% csrf_token %}
-        suspend_start = <input type="date" name="suspend_start" id="suspend_start"><br />
-        suspend_end = <input type="date" name="weekly_pickup_day" id="weekly_pickup_day"><br />
-        <input type="submit" value="Update!">
-    </form>
+    suspend_start = <input type="date" name="suspend_start" id="suspend_start" value="{{logged_in_customer.suspend_start}}"><br />
+    suspend_end = <input type="date" name="weekly_pickup_day" id="weekly_pickup_day" value="{{logged_in_customer.suspend_end}}"><br />
     <p>Would you like to update your weekly pickup day?</p>
-    <form action="{% url 'customers:edit' %}" method="post">
-        {% csrf_token %}
-        weekly_pickup_day = <input type="text" name="weekly_pickup_day" id="weekly_pickup_day"><br />        <input type="submit" value="Update!">
-    </form>
+    weekly_pickup_day = <input type="text" name="weekly_pickup_day" id="weekly_pickup_day" value="{{logged_in_customer.weekly_pickup_day}}"><br /> 
     <p>Would you like to update your basic account info?</p>
-    <form action="{% url 'customers:edit' %}" method="post">
-        {% csrf_token %}
-        Name:<input type= "text" name="name" id="name"><br />
-        Address: <input type="text" name="address" id="address"><br />
-        zip_code = <input type="text" name="zip_code" id="zip_code"><br />
-        <input type="submit" value="Update!">
-    </form>
-
-</body>
-</html>
+    Name:<input type= "text" name="name" id="name" value='{{logged_in_customer.name}}'><br />
+    Address: <input type="text" name="address" id="address" value='{{logged_in_customer.address}}'><br />
+    zip_code = <input type="text" name="zip_code" id="zip_code" value='{{logged_in_customer.zip_code}}'><br />
+    <input type="submit" value="Update">
+</form>
+{% endblock %}

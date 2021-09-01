@@ -14,15 +14,15 @@
   {% for group in user.groups.all%}
     {% if group.name == "Customers" %}
     <div class="navigation_bar">
+      <a href="{% url 'customers:create' %}">Enter Basic Info</a>
       <a href="{% url 'customers:edit' %}">Edit your Profile</a>
-
+      <a href="{% url 'customers:one_time_pickup' %}">One Time Pickup</a>
+      <a href="{% url 'logout' %}">Log Out</a>
     </div>
-    <p>Customer Navbar</p>
     {% elif group.name == "Employees" %}
     <p>Employee Navbar</p>
     {% endif %}
   {% endfor %}
-  <p><a href="{% url 'logout' %}">Log Out</a></p>
 {% endif %}
   <main>
     <h1>{% block header %} {% endblock %}</h1>

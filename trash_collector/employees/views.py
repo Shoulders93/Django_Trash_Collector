@@ -1,4 +1,3 @@
-from trash_collector import customers
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls.base import reverse
 from .models import Employee
@@ -17,15 +16,17 @@ def index(request):
     logged_in_employee = Employee.objects.get(user=user)
     Customer = apps.get_model('customers.Customer')
     customers_in_employees_zip = Customer.objects.filter(zip_code=logged_in_employee.zip_code)
-    for customers in logged_in_employee:
+    customers_same_zip = []
+    customers_pickup_today = []
+    # for customers in Customer:
 
     
     
     
-    context = {
-        "customers": customers_in_employees_zip
-    }
-    return render(request, 'employees/index.html', context)
+    # context = {
+    #     "customers": customers_in_employees_zip
+    # }
+    # return render(request, 'employees/index.html', context)
 
 def create(request):
 

@@ -60,3 +60,16 @@ def edit(request):
             "logged_in_customer": logged_in_customer
         }
         return render(request, "customers/update.html", context)
+
+def one_time_pickup(request):
+    user = request.user
+    logged_in_customer = Customer.objects.get(user=user)
+    if request.method == "POST":
+        logged_in_customer.one_time_pickup = request.POST.get('one_time_pickup')
+        logged_in_customer.save()
+        return HttpResponseRedirect(reverse('customers:index'))
+    else:
+        context = {
+            "logged_in_customer": logged_in_customer
+        }
+        return render(request, "customers/one_time_pickup.html", context)
