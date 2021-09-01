@@ -38,7 +38,6 @@ def create(request):
         new_customer.save()
         return HttpResponseRedirect(reverse('customers:index'))
     else:
-   
         return render(request, 'customers/create.html')
 
 def edit(request):
