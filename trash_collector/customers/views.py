@@ -73,3 +73,17 @@ def one_time_pickup(request):
             "logged_in_customer": logged_in_customer
         }
         return render(request, "customers/one_time_pickup.html", context)
+
+def suspend(request):
+    user = request.user
+    logged_in_customer = Customer.objects.get(user=user)
+    if request.method == "POST":
+        logged_in_customer.suspend_start = request.POST.get('suspend_start')
+        logged_in_customer.suspend_end = request.POST.get('suspend_end')
+        logged_in_customer.save()
+        return HttpResponseRedirect(reverse('customers:index'))
+    else:
+        context = {
+            "logged_in_customer": logged_in_customer
+        }
+        return render(request, "customers/suspend.html", context)

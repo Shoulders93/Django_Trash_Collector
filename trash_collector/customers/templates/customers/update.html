@@ -4,10 +4,8 @@
 
 {% block content %}
 <h2>Edit your information here</h2>
-<p>Would you like to add a one time pickup?</p>
 <form action="{% url 'customers:edit' %}" method="post">
     {% csrf_token %}
-    one_time_pickup = <input type="date" name="one_time_pickup" id="one_time_pickup" value="{{logged_in_customer.one_time_pickup}}"><br />
     <p>Would you like to temporarily suspend your account?</p>
     suspend_start = <input type="date" name="suspend_start" id="suspend_start" value="{{logged_in_customer.suspend_start}}"><br />
     suspend_end = <input type="date" name="weekly_pickup_day" id="weekly_pickup_day" value="{{logged_in_customer.suspend_end}}"><br />

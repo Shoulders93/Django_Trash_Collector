@@ -17,6 +17,7 @@
       <a href="{% url 'customers:create' %}">Enter Basic Info</a>
       <a href="{% url 'customers:edit' %}">Edit your Profile</a>
       <a href="{% url 'customers:one_time_pickup' %}">One Time Pickup</a>
+      <a href="{% url 'customers:suspend' %}">Suspend your Account</a>
       <a href="{% url 'logout' %}">Log Out</a>
     </div>
     {% elif group.name == "Employees" %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}{% block header %} Suspend your Account {% endblock %}{% endblock %}
+
+{% block content %}
+<h2>Edit your information here</h2>
+<form action="{% url 'customers:suspend' %}" method="post">
+    {% csrf_token %}
+    <p>Would you like to temporarily suspend your account?</p>
+    suspend_start = <input type="date" name="suspend_start" id="suspend_start" value="{{logged_in_customer.suspend_start}}"><br />
+    suspend_end = <input type="date" name="suspend_end" id="suspend_end" value="{{logged_in_customer.suspend_end}}"><br />
+    <input type="submit" value="Update">
+</form>
+{% endblock %}
